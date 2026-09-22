@@ -1,45 +1,35 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	branch = "main",
-	event = { "BufReadPre", "BufNewFile" },
 	build = ":TSUpdate",
 	config = function()
-		local treesitter = require("nvim-treesitter.configs")
+		local parsers = {
+			"json",
+			"go",
+			"javascript",
+			"html",
+			"css",
+			"markdown",
+			"bash",
+			"lua",
+			"c",
+			"gitignore",
+			"typescript",
+			"tsx",
+			"sql",
+			"rust",
+		}
 
-		-- config treesitter
-		treesitter.setup({ --syntax highlighting
-			highlight = {
-				enable = true,
-			},
-			-- indentation
-			indent = { enable = true },
-			-- ensure this language parsers are installed
-			ensure_installed = {
-				"json",
-				"go",
-				"javascript",
-				"html",
-				"css",
-				"markdown",
-				"bash",
-				"lua",
-				"c",
-				"gitignore",
-				"typescript",
-				"tsx",
-				"sql",
-				"rust",
-			},
-			-- incremental selection
-			incremental_selection = {
-				enable = true,
-				keymaps = {
-					init_selection = "<C-space>",
-					node_incremental = "<C-space>",
-					scope_incremental = false,
-					node_decremental = "<bs>",
-				},
-			},
+		require("nvim-treesitter").install(parsers)
+
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = parsers,
+			callback = function(args)
+				-- syntax highlighting
+				vim.treesitter.start(args.buf)
+				-- indentation
+				vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			end,
 		})
 	end,
 }
