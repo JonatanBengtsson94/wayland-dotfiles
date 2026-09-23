@@ -26,6 +26,9 @@ alias gco='git checkout'
 # Applications
 alias yy='yazi'
 alias vim='nvim'
+alias vm='virsh'
+alias lg='lazygit'
+alias bt='bluetui'
 
 # Prompt
 if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -37,3 +40,6 @@ if [ "$color_prompt" = yes ]; then
 else
   PS1='[\u@\h \W]\$ '
 fi
+export PATH="$HOME/.local/bin:$PATH"
+
+export LIBVIRT_DEFAULT_URI=qemu:///system
