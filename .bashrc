@@ -43,3 +43,4 @@ fi
 export PATH="$HOME/.local/bin:$PATH"
 
 export LIBVIRT_DEFAULT_URI=qemu:///system
+export EDITOR=nvim
