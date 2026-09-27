@@ -29,6 +29,7 @@ alias vim='nvim'
 alias vm='virsh'
 alias lg='lazygit'
 alias bt='bluetui'
+alias pav='wiremix'
 
 # Prompt
 if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
