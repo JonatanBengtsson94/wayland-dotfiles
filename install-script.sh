@@ -57,7 +57,7 @@ ask "Do you want virtualization (libvirt/QEMU)?" && INSTALL_VIRT=true
 
 echo
 echo "==> Installing Hyprland"
-install hyprland hyprlock hyprpaper wofi kitty nvim yazi pipewire wireplumber ttf-meslo-nerd
+install hyprland hyprlock hyprpaper wofi kitty nvim npm unzip treesitter-cli yazi pipewire wireplumber wiremixer ttf-meslo-nerd
 
 echo "==> Copying config files"
 CONFIG_DIR="$HOME/.config"
